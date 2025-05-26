@@ -3,9 +3,19 @@ import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-@pytest.fixture
-def my_fixture():
-    pass
+# Пропустить тест браузером
+# import pytest
+
+# @pytest.mark.skip_browser("firefox")
+# def test_visit_example(page):
+#     page.goto("https://example.com")
+#     # ...
+ 
+# Запуск в определенном браузере
+# @pytest.mark.only_browser("chromium")
+# def test_visit_example(page):
+#     page.goto("https://example.com")
+#     # ...
 
 def test_add_todo(page):
     page.goto("https://demo.playwright.dev/todomvc/#/")
