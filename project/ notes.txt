@@ -1,0 +1,90 @@
+2.1 Запись скрипта
+Запуск записи скрипта
+    playwright codegen demo.playwright.dev/todomvc/#/
+-------------------------------------------
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+3.2
+Явное ожидание 
+    page.wait_for_selector()
+
+Клик
+    locator.click(**kwargs)
+
+Двойной Клик
+    page.get_by_text("Копировать").dblclick()
+
+Ввод текста
+    def test_login(page):
+    page.goto('https://exaltedplushadware.antonzimaiev.repl.co/?')
+    page.locator("#exampleInputEmail1").fill("admin@example.com")
+
+Посимвольный Ввод
+    def test_login(page):
+    page.goto('https://exaltedplushadware.antonzimaiev.repl.co/?')
+    page.locator("#exampleInputEmail1").type("admin@example.com")
+
+locator.press_sequentially(текст, **kwargs)
+    Метод pressSequentially последовательно отправляет нажатия клавиш к элементу, имитируя процесс набора текста вручную. Он фокусируется на  элементе,
+    а затем отправляет события нажатия клавиши, keydown ,keypress/input  и keyup для каждого символа в тексте.
+    Чтобы добавить время ожидания между нажатиями клавиш используйте аргумент delay, указав значение в милисекундах
+    
+    locator.press_sequentially("world", delay=100)
+
+нажатие клавишы
+    locator.press(key, **kwargs)
+    Функциональные клавиши(F1 - F12, Backspace, Tab, Delete, Escape, ArrowDown, End, Enter, Home, Insert, PageDown, PageUp, ArrowRight, ArrowUp и так далее.) 
+    могут быть отправлены с помощью метода locator.press(key, **kwargs)
+
+
+Checkbox, radio buttons, toggle (Чек-боксы и переключатели)
+    locator.check(**kwargs)
+    Метод playwright созданный специально для работы с чекбоксами и радио кнопками.
+    Этот метод проверяет элемент, выполняя следующие действия:
+    Проверяет, что элемент является checkbox или radio input.
+    Ждет проверки элемента на пригодность к действию, если не установлен параметр force.
+    При необходимости осуществляет скролл к  элементу, чтобы он был видим.
+
+locator.click(**kwargs)
+    Второй способ взаимодействия с данным типом веб-элементов - это уже знакомый нам клик
+    Давайте перепишем наш тест и проверим, что действительно код не сломался и все работает так, как мы этого ожидаем.
+
+locator.check(**kwargs)
+    Метод playwright созданный специально для работы с чекбоксами и радио кнопками.
+
+    Этот метод проверяет элемент, выполняя следующие действия:
+        Проверяет, что элемент является checkbox или radio input.
+        Ждет проверки элемента на пригодность к действию, если не установлен параметр force.
+        При необходимости осуществляет скролл к  элементу, чтобы он был видим.
+        page.locator("text=Default checkbox").check()
+
+locator.select_option(**kwargs)
+    Метод select_option() проверяет, что целевой элемент является тегом  <select>
+
+    В качестве аргумента данного метода, передается один из трех атрибутов, который определяет стратегию поиска пункта в выпадающем списке:
+
+    index - опции для выбора по индексу.В python, как и в любом языке программирования, индексы начинаются с ноля. По этому чтобы выбрать опцию - Предложил новую функцию, нужно указать индекс 1
+    value - для выбора по значению атрибута value.
+    label - выбор по текстовому значению
+
+    По умолчанию используется поиск по value.
+
+drag_and_drop
+    Playwright  предоставляет возможность тестирования  drag & drop  одним лаконичным методом. 
+    Вы можете выполнить операцию перетаскивания с помощью  метода page.drag_and_drop(source, target, **kwargs)
+
+
+on and dialog
+    def test_dialogs(page: Page):
+    page.goto("https://zimaev.github.io/dialog/")
+    page.on("dialog", lambda dialog: dialog.accept())
+    page.get_by_text("Диалог Confirmation").click()
+
+    page.on -  прослушивает события которые, происходит в приложении.  
+
+    'dialog'  -  указывает на тип события которое нужно обработать
+
+    dialog.accept() - закрыть диалоговое окно нажав кнопку «OK»
+    dialog.default_value - возвращает значение подсказки по умолчанию, в случае если тип диалога prompt
+    dialog.dismiss() - закрыть диалоговое окно нажав кнопку «Отмена/Cancel»
+    dialog.message - возвращает сообщение отображаемое в диалоговом окне.
+    dialog.type - возвращает тип диалогового окна
