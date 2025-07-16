@@ -14,7 +14,7 @@ def test_get_by(page):
     #page.get_by_title("username").fill("Anton")
     #page.get_by_role("button", name="Submit").click()
 
-def test_loc(page):
+def test_login(page):
     page.goto('https://zimaev.github.io/text_input/')
     page.get_by_label("Email address").fill("qa@example.com")
     page.get_by_title("username").fill("Anton")

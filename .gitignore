@@ -3,3 +3,7 @@ requarements.txt:Zone.Identifier
 __pycache__
 .pytest_cache
 .vscode
+*.png
+*.jpeg
+
+

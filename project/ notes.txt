@@ -88,3 +88,22 @@ on and dialog
     dialog.dismiss() - закрыть диалоговое окно нажав кнопку «Отмена/Cancel»
     dialog.message - возвращает сообщение отображаемое в диалоговом окне.
     dialog.type - возвращает тип диалогового окна
+
+-------------
+
+Обработка данных загрузки
+    with page.expect_download() as download_info:
+    page.locator("a:has-text(\"Download\")").click()
+    Какую информацию вы получаете?
+        download.cancel() - отменяет загрузку
+        download.delete() - удаляет загруженный файл
+        download.failure() - возвращает ошибку загрузки, если таковая имеется.
+        download.page - возвращает объект страницы, к которой принадлежит загрузка.
+        download.path() - возвращает путь к загруженному файлу
+        download.save_as(path) - скопирует загруженный файл по указанному пути
+        download.suggested_filename - возвращает имя файла
+        download.url - возвращает загруженный URL-адрес
+    
+Исправление timeout
+    page.set_default_timeout(60000)  изменение стандартного timeout
+    page.goto("https://demoqa.com/upload-download", wait_until="domcontentloaded") ожидание загрузки dom
