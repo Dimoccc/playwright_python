@@ -5,6 +5,7 @@ __pycache__
 .vscode
 *.png
 *.jpeg
+*.github
 
 # Playwright
 node_modules/

@@ -1,24 +1,50 @@
 PWDEBUG=1 pytest -k 'test_todo'
 
-настройка launch.json
-После запуск через f5. Код не показывается из-за wsl
+настройка launch.json для playwright
+
 {
     "version": "0.2.0",
     "configurations": [
-    
         {
             "name": "Debug Playwright Tests",
             "type": "python",
             "request": "launch",
             "module": "pytest",
+            "args": [
+                "-s",
+                "--headed",
+                "${file}"
+            ],
             "env": {
                 "PWDEBUG": "1"
             },
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Playwright Browser",
+            "type": "python",
+            "request": "launch",
+            "module": "playwright",
             "args": [
                 "-svv",  // Подробный вывод
-                "--headed"  // Видимый браузер
-            ]
+//                 // "-s",
+               "--headed"  // Видимый браузер
+            ],
+            "console": "integratedTerminal"
         }
     ]
 }
 
+
+settings.json
+
+{
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.testing.pytestEnabled": true,
+    "debugpy.allowRemote": true,
+    "debug.javascript.terminalOptions": {
+        "cwd": "${workspaceFolder}"
+    },
+    "playwright.headed": true
+}
