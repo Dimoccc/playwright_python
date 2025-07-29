@@ -1,5 +1,4 @@
 import pytest
-
 from playwright.sync_api import Playwright, sync_playwright, expect, Page
 
 def test_dialogs_without_processing(page: Page):

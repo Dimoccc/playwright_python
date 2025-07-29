@@ -6,4 +6,5 @@ def test_network(page):
     page.goto('https://reqres.in/')
     page.get_by_text(' Register - successful ').click()
 
+
     

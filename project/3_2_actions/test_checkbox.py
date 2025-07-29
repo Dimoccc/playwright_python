@@ -1,5 +1,4 @@
 import pytest
-
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 def test_checkbox_locator(page):

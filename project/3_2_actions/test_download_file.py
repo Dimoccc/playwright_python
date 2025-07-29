@@ -1,5 +1,4 @@
 import pytest, os
-
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 @pytest.mark.xfail(reason="Не работает через обработчик событий dowload")
